@@ -1,3 +1,46 @@
+# GKTools MI v4.0 Plotter firmware
+
+An Arduino Nano based GRBL setup with support for servo
+
+This version requires the `.hex` file to be directly uploaded, as the bootloader takes too much space
+
+This was hacked together from the 0.9j version of GRBL and https://github.com/robottini/grbl-servo
+
+## Gcode configuration
+
+    $1=25 (step idle delay, msec) (Step idle delay, milliseconds)
+    $2=0 (step port invert mask:00000000) (Step pulse invert, mask)
+    $3=0 (dir port invert mask:00000000) (Step direction invert, mask)
+    $4=0 (step enable invert, bool) (Invert step enable pin, boolean)
+    $5=0 (limit pins invert, bool) (Invert limit pins, boolean)
+    $6=0 (probe pin invert, bool) (Invert probe pin, boolean)
+    $10=3 (status report mask:00000011) (Status report options, mask)
+    $11=0.010 (junction deviation, mm) (Junction deviation, millimeters)
+    $12=0.002 (arc tolerance, mm) (Arc tolerance, millimeters)
+    $13=0 (report inches, bool) (Report in inches, boolean)
+    $20=1 (soft limits, bool) (Soft limits enable, boolean)
+    $21=1 (hard limits, bool) (Hard limits enable, boolean)
+    $22=1 (homing cycle, bool) (Homing cycle enable, boolean)
+    $23=3 (homing dir invert mask:00000011) (Homing direction invert, mask)
+    $24=25.000 (homing feed, mm/min) (Homing locate feed rate, mm/min)
+    $25=1000.000 (homing seek, mm/min) (Homing search seek rate, mm/min)
+    $26=250 (homing debounce, msec) (Homing switch debounce delay, milliseconds)
+    $27=1.000 (homing pull-off, mm) (Homing switch pull-off distance, millimeters)
+    $100=100.000 (x, step/mm) (X-axis steps per millimeter)
+    $101=100.000 (y, step/mm) (Y-axis steps per millimeter)
+    $102=100.000 (z, step/mm) (Z-axis steps per millimeter)
+    $110=15000.000 (x max rate, mm/min) (X-axis maximum rate, mm/min)
+    $111=15000.000 (y max rate, mm/min) (Y-axis maximum rate, mm/min)
+    $112=15000.000 (z max rate, mm/min) (Z-axis maximum rate, mm/min)
+    $120=1000.000 (x accel, mm/sec^2) (X-axis acceleration, mm/sec^2)
+    $121=1000.000 (y accel, mm/sec^2) (Y-axis acceleration, mm/sec^2)
+    $122=1000.000 (z accel, mm/sec^2) (Z-axis acceleration, mm/sec^2)
+    $130=230.000 (x max travel, mm) (X-axis maximum travel, millimeters)
+    $131=335.000 (y max travel, mm) (Y-axis maximum travel, millimeters)
+    $132=1.000 (z max travel, mm) (Z-axis maximum travel, millimeters)
+
+***
+
 ![GitHub Logo](https://github.com/gnea/gnea-Media/blob/master/Grbl%20Logo/Grbl%20Logo%20250px.png?raw=true)
 ***
 

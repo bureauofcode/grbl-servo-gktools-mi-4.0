@@ -132,7 +132,6 @@ void spindle_set_state(uint8_t state, float rpm)
           current_pwm = floor( rpm*(RC_SERVO_RANGE/SPINDLE_RPM_RANGE) + RC_SERVO_SHORT);
           OCR_REGISTER = current_pwm;
         #endif
-      #endif
         #ifdef MINIMUM_SPINDLE_PWM
           if (current_pwm < MINIMUM_SPINDLE_PWM) { current_pwm = MINIMUM_SPINDLE_PWM; }
         #endif
