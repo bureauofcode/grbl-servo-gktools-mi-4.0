@@ -28,7 +28,7 @@
 //* servo patch
 #define RC_SERVO_SHORT     15       // Timer ticks for 0.6ms pulse duration  (9 for 0.6ms)
 #define RC_SERVO_LONG      32       // Timer ticks for 2.5 ms pulse duration  (39 for 2.5ms)
-//#define RC_SERVO_INVERT     1     // Uncomment to invert servo direction
+// #define RC_SERVO_INVERT     1     // Uncomment to invert servo direction
 // servo patch */
 
 
@@ -102,7 +102,7 @@ void spindle_set_state(uint8_t state, float rpm)
       // TODO: Install the optional capability for frequency-based output for servos.
       #ifdef CPU_MAP_ATMEGA2560
         TCCRA_REGISTER = (1<<COMB_BIT) | (1<<WAVE1_REGISTER) | (1<<WAVE0_REGISTER);
-        TCCRB_REGISTER = (TCCRB_REGISTER & 0b11111000) | 0x07 | (1<<WAVE2_REGISTER) | (1<<WAVE3_REGISTER); // set to 1/1025 Prescaler
+        TCCRB_REGISTER = (TCCRB_REGISTER & 0b11111000) | 0x07 | (1<<WAVE2_REGISTER) | (1<<WAVE3_REGISTER); // set to 1/1024 Prescaler
         OCR4A = 0xFFFF; // set the top 16bit value
         uint16_t current_pwm;
       #else
@@ -125,6 +125,7 @@ void spindle_set_state(uint8_t state, float rpm)
           if ( rpm > SPINDLE_RPM_RANGE ) { rpm = SPINDLE_RPM_RANGE; } // Prevent integer overflow
         }
         current_pwm = floor( rpm*(PWM_MAX_VALUE/SPINDLE_RPM_RANGE) + 0.5);
+        //* servo patch
         #ifdef RC_SERVO_INVERT
           current_pwm = floor(RC_SERVO_LONG-rpm*(RC_SERVO_RANGE/SPINDLE_RPM_RANGE));
           OCR_REGISTER = current_pwm;
@@ -132,6 +133,7 @@ void spindle_set_state(uint8_t state, float rpm)
           current_pwm = floor( rpm*(RC_SERVO_RANGE/SPINDLE_RPM_RANGE) + RC_SERVO_SHORT);
           OCR_REGISTER = current_pwm;
         #endif
+        // servo patch  */
         #ifdef MINIMUM_SPINDLE_PWM
           if (current_pwm < MINIMUM_SPINDLE_PWM) { current_pwm = MINIMUM_SPINDLE_PWM; }
         #endif

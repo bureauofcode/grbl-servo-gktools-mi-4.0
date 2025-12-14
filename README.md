@@ -8,6 +8,7 @@ This was hacked together from the 0.9j version of GRBL and https://github.com/ro
 
 ## Gcode configuration
 
+    $0=10 (step pulse, usec) (Step pulse time, microseconds)
     $1=25 (step idle delay, msec) (Step idle delay, milliseconds)
     $2=0 (step port invert mask:00000000) (Step pulse invert, mask)
     $3=0 (dir port invert mask:00000000) (Step direction invert, mask)
@@ -22,10 +23,10 @@ This was hacked together from the 0.9j version of GRBL and https://github.com/ro
     $21=1 (hard limits, bool) (Hard limits enable, boolean)
     $22=1 (homing cycle, bool) (Homing cycle enable, boolean)
     $23=3 (homing dir invert mask:00000011) (Homing direction invert, mask)
-    $24=25.000 (homing feed, mm/min) (Homing locate feed rate, mm/min)
-    $25=1000.000 (homing seek, mm/min) (Homing search seek rate, mm/min)
+    $24=1000.000 (homing feed, mm/min) (Homing locate feed rate, mm/min)
+    $25=5000.000 (homing seek, mm/min) (Homing search seek rate, mm/min)
     $26=250 (homing debounce, msec) (Homing switch debounce delay, milliseconds)
-    $27=1.000 (homing pull-off, mm) (Homing switch pull-off distance, millimeters)
+    $27=2.000 (homing pull-off, mm) (Homing switch pull-off distance, millimeters)
     $100=100.000 (x, step/mm) (X-axis steps per millimeter)
     $101=100.000 (y, step/mm) (Y-axis steps per millimeter)
     $102=100.000 (z, step/mm) (Z-axis steps per millimeter)
